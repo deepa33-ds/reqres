@@ -1,0 +1,44 @@
+meta {
+  name: UPDATE
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{url}}/users/2
+  body: json
+  auth: bearer
+}
+
+headers {
+  x-api-key: reqres-free-v1
+}
+
+auth:bearer {
+  token: reqres-free-v1
+}
+
+body:json {
+  {
+      "name": "morpheus",
+      "job": "zion resident"
+  }
+}
+
+tests {
+  test("status code test", function() {
+     expect(res.getStatus()).to.equal(200);
+  });
+  test("name data type test", function() {
+    expect(res.getBody().name).to.be.a('string');
+  });
+  test("name value test", function() {
+    expect(res.getBody().name).to.equal("morpheus");
+  });
+  test("status text check", function() {
+    expect(res.statusText).to.equal("OK");
+  });
+  test("response time test", function() {
+      expect(res.getResponseTime()).to.lte(2000);
+    });
+}

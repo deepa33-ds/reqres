@@ -1,0 +1,51 @@
+meta {
+  name: CREATE
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{url}}/users
+  body: json
+  auth: bearer
+}
+
+headers {
+  x-api-key: reqres-free-v1
+}
+
+auth:bearer {
+  token: reqres-free-v1
+}
+
+body:json {
+  {
+      "name": "deepa",
+      "job": "leader"
+  }
+}
+
+assert {
+  res.status: eq 201
+  res.body.name: eq deepa
+  res.body.job: eq leader
+  res.body.name.length: eq 5
+}
+
+tests {
+  test("status code test", function() {
+     expect(res.getStatus()).to.equal(201);
+  });
+  test("name data type test", function() {
+    expect(res.getBody().name).to.be.a('string');
+  });
+  test("name value test", function() {
+    expect(res.getBody().name).to.equal("deepa");
+  });
+  test("status text check", function() {
+    expect(res.statusText).to.equal("Created");
+  });
+  test("response time test", function() {
+      expect(res.getResponseTime()).to.lte(2000);
+    });
+}
