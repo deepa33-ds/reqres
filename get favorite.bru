@@ -1,0 +1,19 @@
+meta {
+  name: get favorite
+  type: http
+  seq: 3
+}
+
+get {
+  url: https://airportgap.com/api/favorites/
+  body: json
+  auth: bearer
+}
+
+headers {
+  Authorization: Bearer token=<Your Airport Gap Token>
+}
+
+auth:bearer {
+  token: SDvBYNcowJFDnMSvbtRx7BGt
+}

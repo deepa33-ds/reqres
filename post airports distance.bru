@@ -1,0 +1,21 @@
+meta {
+  name: post airports distance
+  type: http
+  seq: 5
+}
+
+post {
+  url: https://airportgap.com/api/airports/distance?from=butwal&to=ktm
+  body: formUrlEncoded
+  auth: inherit
+}
+
+params:query {
+  from: butwal
+  to: ktm
+}
+
+body:form-urlencoded {
+  from: KIX
+  to: NRT
+}

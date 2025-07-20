@@ -1,0 +1,30 @@
+meta {
+  name: patch airports is
+  type: http
+  seq: 4
+}
+
+patch {
+  url: https://airportgap.com/api/favorites?id=25
+  body: formUrlEncoded
+  auth: bearer
+}
+
+params:query {
+  id: 25
+}
+
+headers {
+  Authorization: Bearer token=<Your Airport Gap Token>
+  : 
+}
+
+auth:bearer {
+  token: SDvBYNcowJFDnMSvbtRx7BGt
+}
+
+body:form-urlencoded {
+  note: My usual layover when visiting family, although it's really far away...
+  email: test@airportgap.com
+  password: airportgappassword
+}
